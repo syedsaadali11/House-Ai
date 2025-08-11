@@ -1,0 +1,25 @@
+# Ignore virtual environment
+env/
+venv/
+.venv/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore environment files
+.env
+
+# Ignore directories you don't want to upload
+backend/
+data/
+static/
+
+# Ignore specific scripts and files
+convert_csv_to_json.py
+debug_agent.py
+generate_synthetic_data.py
+project_structure.txt
+
+# Ignore other non-essential files
+*.txt

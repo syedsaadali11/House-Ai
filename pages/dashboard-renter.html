@@ -1,0 +1,304 @@
+<!-- pages/dashboard-renter.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Dashboard | House AI</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4A6FFF',
+            secondary: '#00C853',
+            accent: '#FF6D00',
+            light: '#F8F9FA',
+            dark: '#212529',
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          boxShadow: {
+            glass: '0 8px 32px rgba(0, 0, 0, 0.1)',
+          },
+          backdropBlur: {
+            xs: '2px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F8F9FA;
+    }
+    .chat-box {
+      height: 70vh;
+      overflow-y: auto;
+    }
+    .chat-message {
+      display: flex;
+      margin-bottom: 1.5rem;
+      max-width: 80%;
+    }
+    .user-msg {
+      margin-left: auto;
+      flex-direction: row-reverse;
+    }
+    .user-msg .chat-bubble {
+      background: #4A6FFF;
+      color: white;
+      border-radius: 16px 16px 0 16px;
+    }
+    .ai-msg .chat-bubble {
+      background: #f1f3f5;
+      color: #212529;
+      border-radius: 16px 16px 16px 0;
+    }
+    .chat-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-bubble {
+      padding: 12px 16px;
+      max-width: 100%;
+      word-wrap: break-word;
+    }
+    .typing-indicator span {
+      animation: blink 1.4s infinite both;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #6C757D;
+      margin: 0 1px;
+    }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <div class="flex h-screen">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-white shadow-lg">
+      <div class="p-6">
+        <h2 class="text-xl font-bold text-primary">House AI</h2>
+        <p class="text-xs text-gray-500 mt-1">آؤ گھر ڈھونڈیں</p>
+      </div>
+      <div class="p-4">
+        <div class="flex items-center space-x-3 p-3 rounded-xl bg-gray-100">
+          <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+            <i data-lucide="user" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-sm">User</p>
+            <p class="text-xs text-gray-500">abdulhaadi@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <nav class="mt-4 space-y-2 px-4 flex-1">
+        <a href="dashboard-renter.html" class="block px-4 py-3 rounded-xl bg-blue-100 text-primary font-medium flex items-center transition-all hover:bg-blue-200">
+          <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>Dashboard
+        </a>
+        <a href="#" class="block px-4 py-3 rounded-xl hover:bg-gray-100 flex items-center transition-all">
+          <i data-lucide="bookmark" class="w-5 h-5 mr-3"></i>Saved Homes
+        </a>
+        <a href="#" class="block px-4 py-3 rounded-xl hover:bg-gray-100 flex items-center transition-all">
+          <i data-lucide="message-square" class="w-5 h-5 mr-3"></i>Messages
+        </a>
+        <a href="#" class="block px-4 py-3 rounded-xl hover:bg-gray-100 flex items-center transition-all">
+          <i data-lucide="settings" class="w-5 h-5 mr-3"></i>Settings
+        </a>
+        <a href="index.html" class="block px-4 py-3 text-red-600 hover:bg-red-50 rounded-xl flex items-center transition-all mt-8">
+          <i data-lucide="log-out" class="w-5 h-5 mr-3"></i>Logout
+        </a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+
+      <!-- Top Bar -->
+      <header class="glass-effect shadow-xl px-6 py-4 border-b border-white/20 flex items-center justify-between">
+        <div class="flex items-center">
+          <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3 text-gray-500">
+            <i data-lucide="user" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-semibold">Welcome, Abdul haadi!</h1>
+            <p class="text-gray-600 text-sm">Your AI rental assistant is ready.</p>
+          </div>
+        </div>
+        <button class="bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all text-sm flex items-center">
+          <i data-lucide="plus" class="w-4 h-4 mr-2"></i>New Search
+        </button>
+      </header>
+
+      <!-- Chat Area -->
+      <main class="flex-1 p-6 chat-box relative bg-gray-50">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="10" r="2" fill="#4A6FFF" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#pattern)" />
+          </svg>
+        </div>
+
+        <!-- AI Welcome -->
+        <div class="chat-message ai-msg">
+          <div class="chat-avatar bg-blue-500 text-white mr-3">
+            <i data-lucide="bot" class="w-5 h-5"></i>
+          </div>
+          <div class="chat-bubble">
+            Assalamu alaikum! 👋<br><br>
+            I'm <strong>House AI</strong>, your rental assistant. Tell me about your dream home:<br>
+      
+          </div>
+        </div>
+
+        <!-- Typing Indicator (Hidden by default) -->
+        <div id="typing-indicator" class="chat-message ai-msg hidden">
+          <div class="chat-avatar bg-blue-500 text-white mr-3">
+            <i data-lucide="bot" class="w-5 h-5"></i>
+          </div>
+          <div class="chat-bubble typing-indicator">
+            <span>.</span><span>.</span><span>.</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Input Box -->
+      <div class="p-6 glass-effect border-t border-white/20">
+        <div class="flex space-x-4">
+          <input
+            id="query-input"
+            type="text"
+            placeholder="Describe your dream house..."
+            class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            autofocus
+          />
+          <button id="send-btn" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+            Send
+          </button>
+        </div>
+    
+
+    </div>
+  </div>
+
+<!-- JavaScript -->
+<script>
+// Replace the JavaScript section in your dashboard-renter.html with this:
+
+const chatBox = document.querySelector('.chat-box');
+const input = document.getElementById('query-input');
+const sendBtn = document.getElementById('send-btn');
+const typingIndicator = document.getElementById('typing-indicator');
+
+// Initialize Lucide icons
+lucide.createIcons();
+
+function appendMessage(text, isUser, icon = 'user') {
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `chat-message ${isUser ? 'user-msg' : 'ai-msg'}`;
+
+  const avatarIcon = isUser ? 'user' : 'bot';
+  const avatarDiv = document.createElement('div');
+  avatarDiv.className = `chat-avatar ${isUser ? 'bg-gray-400 text-white ml-3' : 'bg-blue-500 text-white mr-3'}`;
+  avatarDiv.innerHTML = `<i data-lucide="${avatarIcon}" class="w-5 h-5"></i>`;
+
+  const bubbleDiv = document.createElement('div');
+  bubbleDiv.className = 'chat-bubble';
+  bubbleDiv.innerHTML = text;
+
+  if (isUser) {
+    msgDiv.appendChild(bubbleDiv);
+    msgDiv.appendChild(avatarDiv);
+  } else {
+    msgDiv.appendChild(avatarDiv);
+    msgDiv.appendChild(bubbleDiv);
+  }
+
+  chatBox.appendChild(msgDiv);
+  lucide.createIcons();
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function showTypingIndicator() {
+  typingIndicator.classList.remove('hidden');
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function hideTypingIndicator() {
+  typingIndicator.classList.add('hidden');
+}
+
+sendBtn.addEventListener('click', async () => {
+  const query = input.value.trim();
+  if (!query) return;
+
+  appendMessage(query, true);
+  input.value = '';
+  showTypingIndicator();
+
+  try {
+    const res = await fetch('/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query })
+    });
+
+    const data = await res.json();
+    hideTypingIndicator();
+
+    let aiResponse;
+    if (data.response) {
+      // 🔧 FIX: Don't modify the response - it already has correct links
+      aiResponse = data.response.replace(/\n/g, '<br>');
+    } else {
+      aiResponse = "❌ Sorry, I couldn't find any matching homes. Try adjusting your search.";
+    }
+
+    appendMessage(aiResponse, false, 'bot');
+  } catch (err) {
+    console.error(err);
+    hideTypingIndicator();
+    appendMessage("❌ Connection error. Please try again.", false, 'bot');
+  }
+});
+
+input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendBtn.click();
+});
+</script>
+</body>
+</html>

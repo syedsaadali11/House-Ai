@@ -1,0 +1,315 @@
+<!-- pages/property-detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Property Details | House AI</title>
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4A6FFF',
+            secondary: '#00C853',
+            accent: '#FF6D00',
+            light: '#F8F9FA'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+  <!-- Sidebar -->
+  <div class="fixed left-0 top-0 h-full w-64 bg-white shadow-xl border-r border-gray-200 flex flex-col p-4 space-y-6">
+    <div class="flex items-center space-x-3 p-3 rounded-xl bg-blue-50">
+      <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+        <i data-lucide="home" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <p class="font-semibold text-sm">User</p>
+        <p class="text-xs text-gray-500">user@gmail.com</p>
+      </div>
+    </div>
+
+    <nav class="mt-4 space-y-2 px-4 flex-1">
+      <a href="dashboard-renter.html" class="block px-4 py-3 rounded-xl hover:bg-gray-100 flex items-center transition-all">
+        <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>Dashboard
+      </a>
+      <a href="index.html" class="block px-4 py-3 text-red-600 hover:bg-red-50 rounded-xl flex items-center transition-all mt-8">
+        <i data-lucide="log-out" class="w-5 h-5 mr-3"></i>Logout
+      </a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+
+    <!-- Top Bar -->
+    <header class="glass-effect shadow-xl px-6 py-4 border-b border-white/20 flex items-center justify-between">
+      <div class="flex items-center">
+        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3 text-gray-500">
+          <i data-lucide="user" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-primary">Property Details</h1>
+          <p class="text-sm text-gray-500">Full listing information</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="text-sm text-gray-500">آؤ گھر ڈھونڈیں</div>
+        <a href="/dashboard-renter" class="text-primary hover:underline">Back to Search</a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="max-w-7xl mx-auto px-6 py-8" id="property-container">
+      <div class="glass-effect p-8 rounded-2xl shadow-2xl border border-white/20">
+        <div id="property-info">
+          <!-- Title & Price -->
+          <h1 id="prop-title" class="text-3xl font-bold text-gray-900">Loading...</h1>
+          <p id="prop-location" class="text-lg text-gray-600 mt-2">📍 Loading location...</p>
+          <p id="prop-price" class="text-2xl font-semibold text-primary mt-4">PKR 0</p>
+
+          <!-- Details -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+            <div class="p-4 bg-white/20 rounded-xl text-center">
+              <p class="text-sm text-gray-600">Size</p>
+              <p id="prop-size" class="text-lg font-semibold">- Marla</p>
+            </div>
+            <div class="p-4 bg-white/20 rounded-xl text-center">
+              <p class="text-sm text-gray-600">Stories</p>
+              <p id="prop-stories" class="text-lg font-semibold">-</p>
+            </div>
+            <div class="p-4 bg-white/20 rounded-xl text-center">
+              <p class="text-sm text-gray-600">Bedrooms</p>
+              <p id="prop-beds" class="text-lg font-semibold">-</p>
+            </div>
+            <div class="p-4 bg-white/20 rounded-xl text-center">
+              <p class="text-sm text-gray-600">Bathrooms</p>
+              <p id="prop-baths" class="text-lg font-semibold">-</p>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <div class="mt-6">
+            <h3 class="text-lg font-semibold mb-2">Features</h3>
+            <div id="prop-features" class="flex flex-wrap gap-2">
+              <!-- Features will be added here -->
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="mt-6">
+            <h3 class="text-lg font-semibold mb-2">Description</h3>
+            <p id="property-description" class="text-gray-700">Property details are loading...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loader -->
+    <div id="loader" class="flex justify-center mt-10">
+      <p class="text-gray-500">Loading property details...</p>
+    </div>
+
+  </div>
+
+  <script>
+    // Replace the JavaScript section in your property-detail.html with this:
+
+// Replace the JavaScript section in your property-detail.html with this:
+
+(function() {
+  // Get property ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const propId = urlParams.get('id');
+
+  console.log("URL search params:", window.location.search);
+  console.log("Property ID from URL:", propId);
+
+  if (!propId || propId.trim() === "") {
+    showError("No property ID provided. Please go back and select a property.");
+    document.getElementById("loader").remove();
+    return;
+  }
+
+  console.log("Loading property with ID:", propId);
+
+  // 🔧 FIX: Use the Flask data route
+  const csvPaths = [
+    '/data/rental_metadata_90k.csv'    // This matches your Flask /data/<filename> route
+  ];
+
+  // Try loading CSV from different paths
+  async function loadCSV() {
+    for (let path of csvPaths) {
+      try {
+        console.log(`Trying to load CSV from: ${path}`);
+        const response = await fetch(path);
+        
+        if (response.ok) {
+          console.log(`✅ Successfully loaded CSV from: ${path}`);
+          return await response.text();
+        } else {
+          console.log(`❌ Failed to load from ${path}: ${response.status}`);
+        }
+      } catch (error) {
+        console.log(`❌ Error loading from ${path}:`, error);
+      }
+    }
+    throw new Error("Could not load CSV from any path");
+  }
+
+  // Load and parse CSV
+  loadCSV()
+    .then(csv => {
+      console.log("✅ CSV loaded successfully, parsing...");
+      const lines = csv.trim().split('\n');
+      
+      if (lines.length < 2) {
+        throw new Error("CSV is empty or has no data rows");
+      }
+
+      // Parse CSV more carefully
+      const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+      console.log("CSV Headers:", headers);
+
+      const data = [];
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        // Handle CSV parsing with potential commas in quoted fields
+        const values = parseCSVLine(line);
+        
+        if (values.length >= headers.length) {
+          const row = {};
+          headers.forEach((header, idx) => {
+            row[header] = values[idx] ? values[idx].trim().replace(/"/g, '') : "";
+          });
+          data.push(row);
+        }
+      }
+
+      console.log(`Parsed ${data.length} properties from CSV`);
+      console.log("Sample property:", data[0]);
+
+      // Find the specific property
+      const property = data.find(p => p.id === propId || p.id === propId.toString());
+      
+      if (!property) {
+        console.log("Available property IDs:", data.slice(0, 10).map(p => p.id));
+        showError(`Property with ID "${propId}" not found in database.`);
+        return;
+      }
+
+      console.log("Found property:", property);
+      updatePropertyDisplay(property);
+      document.getElementById("loader").remove();
+    })
+    .catch(err => {
+      console.error("❌ Error loading property:", err);
+      showError(`Failed to load data: ${err.message}`);
+    });
+
+  // Simple CSV line parser (handles basic quoted fields)
+  function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        result.push(current);
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    result.push(current); // Add the last field
+    return result;
+  }
+
+  function updatePropertyDisplay(property) {
+    // Update page elements
+    document.getElementById("prop-title").textContent = 
+      `${property.size_marla} Marla ${capitalize(property.stories)}-Story House`;
+    
+    document.getElementById("prop-location").textContent = 
+      `📍 ${property.area}, ${property.city}`;
+    
+    document.getElementById("prop-price").textContent = 
+      `PKR ${parseInt(property.price || 0).toLocaleString()}`;
+    
+    document.getElementById("prop-size").textContent = `${property.size_marla} Marla`;
+    document.getElementById("prop-stories").textContent = capitalize(property.stories);
+    document.getElementById("prop-beds").textContent = property.bedrooms || "N/A";
+    document.getElementById("prop-baths").textContent = property.bathrooms || "N/A";
+    document.getElementById("property-description").textContent = 
+      property.text || "No description available.";
+
+    // Features
+    const featuresContainer = document.getElementById("prop-features");
+    featuresContainer.innerHTML = '';
+    
+    const availableFeatures = [];
+    if (property.electricity === "Yes") availableFeatures.push("Electricity");
+    if (property.gas === "Yes") availableFeatures.push("Gas");
+    
+    availableFeatures.forEach(feature => {
+      const badge = document.createElement("span");
+      badge.className = "bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm";
+      badge.textContent = feature;
+      featuresContainer.appendChild(badge);
+    });
+
+    if (availableFeatures.length === 0) {
+      const noFeatures = document.createElement("span");
+      noFeatures.className = "text-gray-500 text-sm";
+      noFeatures.textContent = "No special features listed";
+      featuresContainer.appendChild(noFeatures);
+    }
+  }
+
+  function showError(msg) {
+    const loader = document.getElementById("loader");
+    if (loader) loader.remove();
+    
+    const container = document.getElementById("property-container");
+    container.innerHTML = `
+      <div class="text-center py-12">
+        <div class="text-red-600 text-lg mb-4">${msg}</div>
+        <a href="dashboard-renter.html" class="text-primary hover:underline">← Back to Search</a>
+      </div>
+    `;
+  }
+
+  function capitalize(str) {
+    return str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+  }
+
+  // Initialize Lucide icons
+  lucide.createIcons();
+})();  </script>
+</body>
+</html>

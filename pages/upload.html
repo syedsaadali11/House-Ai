@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Property | House AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4A6FFF',
+            secondary: '#00C853',
+            accent: '#FF6D00',
+            light: '#F8F9FA',
+            dark: '#212529',
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #4A6FFF 0%, #6A8CFF 50%, #8B5CF6 100%);
+    }
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #4A6FFF, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .floating-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body class="gradient-bg min-h-screen">
+  <!-- Header -->
+  <div class="glass-effect shadow-xl border-b border-white/20">
+    <div class="max-w-5xl mx-auto px-6 py-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <a href="/" class="text-primary hover:text-purple-600 text-lg flex items-center transition-colors mb-3">
+            <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+            <span>Back to Home</span>
+          </a>
+          <div class="flex items-center mb-2">
+            <div class="w-8 h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-3">
+              <i data-lucide="upload" class="w-4 h-4 text-white"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gradient">List Your Property</h1>
+          </div>
+          <p class="text-gray-600 text-lg">Fill in the details — we'll match you with serious renters instantly.</p>
+          <p class="text-sm text-primary font-medium mt-1">آؤ گھر ڈھونڈیں</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Upload Form -->
+  <div class="max-w-5xl mx-auto px-6 py-8">
+    <!-- Success Message (Hidden by Default) -->
+    <div id="success-msg" class="hidden glass-effect border border-green-200 text-green-800 p-4 rounded-xl mb-6 flex items-center">
+      <i data-lucide="check-circle" class="w-5 h-5 mr-2 text-green-600"></i>
+      Property listed successfully! Redirecting to dashboard...
+    </div>
+    
+    <!-- Error Message -->
+    <div id="error-msg" class="hidden glass-effect border border-red-200 text-red-800 p-4 rounded-xl mb-6 flex items-center">
+      <i data-lucide="alert-circle" class="w-5 h-5 mr-2 text-red-600"></i>
+      Failed to upload property. Please try again.
+    </div>
+    
+    <form id="upload-form" class="glass-effect p-8 rounded-2xl shadow-2xl border border-white/20">
+      <!-- Location -->
+      <div class="mb-8">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+            <i data-lucide="map-pin" class="w-4 h-4 text-green-600"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-800">Location</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+  <label class="block font-medium mb-3 text-gray-700">
+    <i data-lucide="map" class="w-4 h-4 inline mr-2"></i>
+    City
+  </label>
+  <input 
+    type="text" 
+    name="city" 
+    list="city-suggestions"
+    class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" 
+    placeholder="e.g. Lahore, Karachi, or your city" 
+    required 
+  />
+  <datalist id="city-suggestions">
+    <option value="Lahore">
+    <option value="Karachi">
+    <option value="Islamabad">
+    <option value="Rawalpindi">
+    <option value="Faisalabad">
+    <option value="Peshawar">
+    <option value="Muzaffargarh">
+    <option value="Nawabshah">
+    <option value="Hyderabad">
+    <option value="Jamshoro">
+    <option value="Thatta">
+    <option value="Mirpur Khas">
+    <option value="Umerkot">
+    <option value="Dadu">
+    <option value="Sukkur">
+    <option value="Khairpur">
+    <option value="Abbottabad">
+    <option value="Mansehra">
+    <option value="Haripur">
+    <option value="Bannu">
+    <option value="Chitral">
+    <option value="Dera Ismail Khan">
+    <option value="Swat">
+    <option value="Dir">
+    <option value="Kohat">
+    <option value="Quetta">
+    <option value="Gwadar">
+    <option value="Panjgur">
+    <option value="Khuzdar">
+    <option value="Zhob">
+    <option value="Ziarat">
+    <option value="Dera Bugti">
+    <option value="Lasbela">
+    <option value="Mastung">
+    <option value="Nushki">
+  </datalist>
+</div>
+          <div>
+            <label class="block font-medium mb-3 text-gray-700">
+              <i data-lucide="navigation" class="w-4 h-4 inline mr-2"></i>
+              Area / Mohalla
+            </label>
+            <input type="text" name="area" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="e.g. DHA Phase 5, Bahria Town" required />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Size & Specifications -->
+      <div class="mb-8">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+            <i data-lucide="ruler" class="w-4 h-4 text-purple-600"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-800">Size & Specifications</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+          <div>
+            <label class="block font-medium mb-3 text-gray-700">
+              <i data-lucide="square" class="w-4 h-4 inline mr-2"></i>
+              Size (Marla)
+            </label>
+            <input type="number" name="size_marla" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" step="0.1" min="1" required />
+          </div>
+          <div>
+            <label class="block font-medium mb-3 text-gray-700">
+              <i data-lucide="layers" class="w-4 h-4 inline mr-2"></i>
+              Structure
+            </label>
+            <select name="stories" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" required>
+              <option value="single">Single Story</option>
+              <option value="double">Double Story</option>
+              <option value="triple">Triple Story</option>
+            </select>
+          </div>
+          <div>
+  <label class="block font-medium mb-3 text-gray-700">
+    <i data-lucide="map-pin" class="w-4 h-4 inline mr-2"></i>
+    Nearby Location
+  </label>
+  <input 
+    type="text" 
+    name="location" 
+    class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" 
+    placeholder="e.g. Near School, Close to Metro, Beside Bahria Mall" 
+    required 
+  />
+</div>
+        </div>
+        
+        <!-- Rooms -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block font-medium mb-3 text-gray-700">
+              <i data-lucide="bed" class="w-4 h-4 inline mr-2"></i>
+              Bedrooms
+            </label>
+            <input type="number" name="bedrooms" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" min="1" value="3" required />
+          </div>
+          <div>
+            <label class="block font-medium mb-3 text-gray-700">
+              <i data-lucide="droplets" class="w-4 h-4 inline mr-2"></i>
+              Bathrooms
+            </label>
+            <input type="number" name="bathrooms" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" min="1" value="2" required />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Utilities -->
+      <div class="mb-8">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+            <i data-lucide="zap" class="w-4 h-4 text-yellow-600"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-800">Utilities</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block font-medium mb-3 text-gray-700">
+              <i data-lucide="bolt" class="w-4 h-4 inline mr-2"></i>
+              Electricity
+            </label>
+            <select name="electricity" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" required>
+              <option value="Yes">Available</option>
+              <option value="No">Not Available</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-medium mb-3 text-gray-700">
+              <i data-lucide="flame" class="w-4 h-4 inline mr-2"></i>
+              Gas
+            </label>
+            <select name="gas" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" required>
+              <option value="Yes">Available</option>
+              <option value="No">Not Available</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pricing -->
+      <div class="mb-8">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+            <i data-lucide="dollar-sign" class="w-4 h-4 text-yellow-600"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-800">Pricing</h2>
+        </div>
+        
+        <div>
+          <label class="block font-medium mb-3 text-gray-700">
+            <i data-lucide="banknote" class="w-4 h-4 inline mr-2"></i>
+            Monthly Rent (PKR)
+          </label>
+          <input type="number" name="price" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-lg" placeholder="e.g. 45000" required />
+        </div>
+      </div>
+      
+      <!-- Property Status -->
+      <div class="mb-8">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center mr-3">
+            <i data-lucide="check-circle" class="w-4 h-4 text-indigo-600"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-800">Property Status</h2>
+        </div>
+        
+        <div>
+          <label class="block font-medium mb-3 text-gray-700">
+            <i data-lucide="home" class="w-4 h-4 inline mr-2"></i>
+            Current Status
+          </label>
+          <select name="status" class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all" required>
+            <option value="available">Available for Rent</option>
+            <option value="rented">Already Rented</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Submit -->
+      <div class="pt-6 border-t border-gray-200">
+        <button type="submit" class="w-full bg-gradient-to-r from-primary to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700 shadow-xl transition-all transform hover:scale-[1.02] flex items-center justify-center">
+          <i data-lucide="rocket" class="w-5 h-5 mr-2"></i>
+          List My Property
+        </button>
+        <p class="text-center text-sm text-gray-500 mt-3">
+          <i data-lucide="shield-check" class="w-4 h-4 inline mr-1"></i>
+          Your listing will be saved locally
+        </p>
+      </div>
+    </form>
+  </div>
+  
+  <!-- JavaScript -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    const uploadForm = document.getElementById('upload-form');
+    const successMsg = document.getElementById('success-msg');
+    const errorMsg = document.getElementById('error-msg');
+    
+    uploadForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      
+      // Show loading state
+      const submitBtn = uploadForm.querySelector("button[type='submit']");
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin"></i>Saving Property...';
+      lucide.createIcons();
+      
+      try {
+        // Convert form data to object
+        const propertyData = Object.fromEntries(formData.entries());
+        
+        // Generate text field as per CSV format
+        propertyData.text = `A ${propertyData.size_marla} marla ${propertyData.stories}-story house in ${propertyData.area}, ${propertyData.city} with ${propertyData.bedrooms} bedrooms, ${propertyData.bathrooms} bathrooms, electricity: ${propertyData.electricity}, gas: ${propertyData.gas}. Located near ${propertyData.location}. Rent: ${propertyData.price} PKR. Status: ${propertyData.status}.`;
+        
+        // Generate unique ID
+        const properties = JSON.parse(localStorage.getItem('properties') || '[]');
+        propertyData.id = properties.length > 0 ? Math.max(...properties.map(p => p.id)) + 1 : 1;
+        
+        // Save to localStorage
+        properties.push(propertyData);
+        localStorage.setItem('properties', JSON.stringify(properties));
+        
+        // Show success message
+        successMsg.classList.remove('hidden');
+        errorMsg.classList.add('hidden');
+        
+        // Scroll to top to show success message
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'dashboard-owner';
+        }, 2000);
+      } catch (err) {
+        console.error("Upload error:", err);
+        errorMsg.textContent = 'Failed to save property. Please try again.';
+        errorMsg.classList.remove('hidden');
+        successMsg.classList.add('hidden');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHTML;
+        lucide.createIcons();
+        
+        // Scroll to top to show error message
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+  </script>
+</body>
+</html>

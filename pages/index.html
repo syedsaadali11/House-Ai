@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>House AI - AI-Powered Rental Homes in Pakistan</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4A6FFF',
+            secondary: '#00C853',
+            accent: '#FF6D00',
+            light: '#F8F9FA',
+            dark: '#212529',
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #4A6FFF 0%, #6A8CFF 50%, #8B5CF6 100%);
+    }
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+    .floating-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #4A6FFF, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body class="bg-light text-dark">
+  <!-- Navbar -->
+  <nav class="glass-effect shadow-xl fixed w-full top-0 z-50 border-b border-white/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-3">
+            <i data-lucide="home" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="text-2xl font-bold text-gradient">House AI</span>
+        </div>
+        <!-- Navigation Links -->
+        <div class="flex items-center space-x-6">
+          <a href="/" class="text-gray-700 hover:text-primary transition-colors flex items-center">
+            <i data-lucide="home" class="w-4 h-4 mr-1"></i>
+            Home
+          </a>
+          <a href="#how-it-works" class="text-gray-700 hover:text-primary transition-colors flex items-center">
+            <i data-lucide="info" class="w-4 h-4 mr-1"></i>
+            How It Works
+          </a>
+          <a href="/auth" class="bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg flex items-center">
+            <i data-lucide="user" class="w-4 h-4 mr-2"></i>
+            Sign In
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 text-center max-w-6xl mx-auto relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-20 left-20 w-32 h-32 border-2 border-primary rounded-full floating-animation"></div>
+      <div class="absolute top-40 right-20 w-24 h-24 border-2 border-purple-500 rounded-full floating-animation" style="animation-delay: -2s;"></div>
+      <div class="absolute bottom-32 left-32 w-16 h-16 border-2 border-blue-400 rounded-full floating-animation" style="animation-delay: -4s;"></div>
+    </div>
+
+    <div class="relative z-10">
+      <!-- Badge -->
+      <div class="inline-flex items-center bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-full px-4 py-2 mb-6">
+        <i data-lucide="sparkles" class="w-4 h-4 text-primary mr-2"></i>
+        <span class="text-sm font-medium text-primary">AI-Powered Property Search</span>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        Find Your <span class="text-gradient">Perfect Rental Home</span> in 30 Seconds
+      </h1>
+      <p class="text-xl text-gray-600 mb-4 max-w-3xl mx-auto">
+        No more driving around, fake listings, or wasted time. Just tell our AI your needs — and get real, available homes instantly.
+      </p>
+      <p class="text-lg text-primary font-medium mb-8">آؤ گھر ڈھونڈیں</p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+        <a href="/dashboard-renter" class="bg-gradient-to-r from-primary to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-medium hover:from-blue-600 hover:to-purple-700 shadow-xl transition-all transform hover:scale-105 flex items-center">
+          <i data-lucide="search" class="w-5 h-5 mr-2"></i>
+          Find a House
+        </a>
+        <a href="/upload" class="border-2 border-primary text-primary px-8 py-4 rounded-xl text-lg font-medium hover:bg-primary hover:text-white transition-all transform hover:scale-105 flex items-center">
+          <i data-lucide="plus-circle" class="w-5 h-5 mr-2"></i>
+          List Your Property
+        </a>
+      </div>
+
+      <!-- Mock AI Chat -->
+      <div class="glass-effect p-8 rounded-2xl shadow-2xl max-w-3xl mx-auto border border-white/20">
+        <div class="flex items-center mb-6">
+          <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mr-3">
+            <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+          </div>
+          <h3 class="text-xl font-semibold">Try AI Search Now:</h3>
+        </div>
+        
+        <div class="space-y-4">
+          <div class="bg-gray-50 p-4 rounded-xl text-left border-l-4 border-primary">
+            <div class="flex items-center mb-2">
+              <i data-lucide="user" class="w-4 h-4 text-gray-500 mr-2"></i>
+              <span class="text-sm text-gray-500 font-medium">You</span>
+            </div>
+            <p class="text-gray-800 font-mono">"Find me a 5 marla house in Islamabad under 40k with garage"</p>
+          </div>
+          
+          <div class="bg-gradient-to-r from-primary to-purple-600 text-white p-4 rounded-xl text-left">
+            <div class="flex items-center mb-2">
+              <i data-lucide="bot" class="w-4 h-4 mr-2"></i>
+              <span class="text-sm font-medium opacity-90">House AI</span>
+            </div>
+            <p class="flex items-center">
+              <i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-300"></i>
+              Found 3 matches! Top pick: 5 marla, double-story, DHA Phase 2 – PKR 38,000.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="p-6">
+          <div class="text-4xl font-bold text-gradient mb-2">10K+</div>
+          <div class="text-gray-600">Happy Users</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-gradient mb-2">5K+</div>
+          <div class="text-gray-600">Properties Listed</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-gradient mb-2">98%</div>
+          <div class="text-gray-600">Success Rate</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold text-gradient mb-2">30s</div>
+          <div class="text-gray-600">Average Search Time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold mb-4">How House AI Works</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Simple, fast, and intelligent property search powered by AI</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-12">
+        <!-- Step 1 -->
+        <div class="relative p-8 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl border border-blue-100 hover:shadow-xl transition-all transform hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+            <i data-lucide="message-circle" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">Tell Us Your Needs</h3>
+          <p class="text-gray-600 leading-relaxed">Budget, location, size, garage — just type like you're talking to a friend. Our AI understands natural language.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative p-8 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100 hover:shadow-xl transition-all transform hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+            <i data-lucide="brain" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">AI Finds Matches</h3>
+          <p class="text-gray-600 leading-relaxed">Our advanced AI scans thousands of real listings and finds the best homes that perfectly match your requirements.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative p-8 bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl border border-green-100 hover:shadow-xl transition-all transform hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+            <i data-lucide="phone" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">View & Contact</h3>
+          <p class="text-gray-600 leading-relaxed">See photos, price, location details — then contact the owner directly via WhatsApp with one click.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Why Choose House AI?</h2>
+        <p class="text-xl text-gray-600">Advanced features that make property search effortless</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="zap" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Lightning Fast</h3>
+          <p class="text-gray-600">Get results in under 30 seconds with our optimized AI algorithms.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="shield-check" class="w-6 h-6 text-green-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Verified Listings</h3>
+          <p class="text-gray-600">All properties are verified to ensure authenticity and availability.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="map-pin" class="w-6 h-6 text-purple-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Location Intelligence</h3>
+          <p class="text-gray-600">Smart location matching based on your preferences and needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Owner CTA -->
+  <section class="py-20 gradient-bg text-white relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-20 h-20 border border-white rounded-full"></div>
+      <div class="absolute top-32 right-20 w-16 h-16 border border-white rounded-full"></div>
+      <div class="absolute bottom-20 left-32 w-12 h-12 border border-white rounded-full"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
+      <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <i data-lucide="building" class="w-8 h-8 text-white"></i>
+      </div>
+      <h2 class="text-4xl font-bold mb-6">Are You a Property Owner?</h2>
+      <p class="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+        List your house once — and get serious tenants fast. No agents, no hassle. Our AI matches you with the right renters.
+      </p>
+      <a href="/upload" class="inline-flex items-center bg-white text-primary px-8 py-4 rounded-xl text-lg font-medium hover:bg-gray-100 shadow-xl transition-all transform hover:scale-105">
+        <i data-lucide="upload" class="w-5 h-5 mr-2"></i>
+        List Your Property Free
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-16 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <div class="flex items-center justify-center mb-4">
+          <div class="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-3">
+            <i data-lucide="home" class="w-5 h-5 text-white"></i>
+          </div>
+          <h3 class="text-3xl font-bold">House AI</h3>
+        </div>
+        <p class="text-gray-400 text-lg mb-6">آؤ گھر ڈھونڈیں — AI-powered rental homes for Pakistan</p>
+        <p class="text-gray-500">Simple. Fast. Trusted.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div>
+          <h4 class="text-lg font-semibold mb-4">For Renters</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">Search Properties</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Success Stories</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">For Owners</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">List Property</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Owner Guide</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Support</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 text-center">
+        <p class="text-gray-400">&copy; 2024 House AI. All rights reserved. Made with ❤️ for Pakistan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
